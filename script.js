@@ -1,184 +1,25 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+// Botão voltar ao topo
+let topButton = document.getElementById("topButton");
 
-html {
-    scroll-behavior: smooth;
-}
+window.onscroll = function () {
+  // barra de progresso
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrolled = (winScroll / height) * 100;
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #050816, #0b1120, #111827);
-    color: #e5e7eb;
-}
+  document.getElementById("progressBar").style.width = scrolled + "%";
 
-/* Barra de progresso */
-#progressBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 5px;
-    background: linear-gradient(90deg, #00f5ff, #00ff88);
-    z-index: 9999;
-    box-shadow: 0 0 15px #00f5ff;
-}
+  // mostrar botão topo
+  if (document.documentElement.scrollTop > 300) {
+    topButton.style.display = "block";
+  } else {
+    topButton.style.display = "none";
+  }
+};
 
-/* Sidebar */
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 260px;
-    height: 100vh;
-    background: rgba(10, 15, 30, 0.96);
-    border-right: 2px solid #00f5ff;
-    padding: 30px 20px;
-    box-shadow: 0 0 25px rgba(0, 245, 255, 0.35);
-    overflow-y: auto;
-}
-
-.sidebar h2 {
-    color: #00f5ff;
-    margin-bottom: 30px;
-    text-shadow: 0 0 12px #00f5ff;
-}
-
-.sidebar a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    margin: 12px 0;
-    padding: 14px;
-    border-radius: 12px;
-    transition: 0.3s;
-}
-
-.sidebar a:hover {
-    background: #00f5ff;
-    color: black;
-    transform: translateX(8px);
-    box-shadow: 0 0 20px #00f5ff;
-}
-
-/* Conteúdo */
-.content {
-    margin-left: 280px;
-    padding: 40px;
-}
-
-section {
-    margin-bottom: 80px;
-    background: rgba(255,255,255,0.05);
-    padding: 35px;
-    border-radius: 22px;
-    border: 1px solid rgba(0,245,255,0.25);
-    box-shadow: 0 0 20px rgba(0,245,255,0.08);
-}
-
-section h1 {
-    color: #00f5ff;
-    margin-bottom: 20px;
-    font-size: 2.3rem;
-    text-shadow: 0 0 12px rgba(0,245,255,0.8);
-}
-
-section h3 {
-    color: #00ff88;
-    margin: 25px 0 12px 0;
-}
-
-section p,
-section li {
-    line-height: 1.8;
-    font-size: 1.05rem;
-}
-
-ul {
-    padding-left: 25px;
-}
-
-/* Logos */
-.logo {
-    width: 42px;
-    height: 42px;
-    margin-right: 12px;
-    vertical-align: middle;
-    background: white;
-    padding: 4px;
-    border-radius: 10px;
-}
-
-/* Tabela */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 25px;
-}
-
-th {
-    background: #00f5ff;
-    color: black;
-}
-
-th, td {
-    padding: 16px;
-    border: 1px solid rgba(255,255,255,0.2);
-    text-align: center;
-}
-
-tr:hover {
-    background: rgba(0,245,255,0.08);
-}
-
-/* Quiz */
-.quiz-box button {
-    margin: 10px;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    background: #00f5ff;
-    transition: 0.3s;
-}
-
-.quiz-box button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 18px #00f5ff;
-}
-
-/* Botão topo */
-#topButton {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 55px;
-    height: 55px;
-    border: none;
-    border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
-    display: none;
-    background: #00f5ff;
-    box-shadow: 0 0 20px #00f5ff;
-    z-index: 999;
-}
-
-/* Responsivo */
-@media (max-width: 900px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 2px solid #00f5ff;
-    }
-
-    .content {
-        margin-left: 0;
-        padding: 20px;
-    }
+function voltarTopo() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
